@@ -1,0 +1,5 @@
+Make sure the local repo is committed before doing any of this !!!
+git fetch upstream master
+git checkout master
+git merge upstream/master
+git push origin mmaster
