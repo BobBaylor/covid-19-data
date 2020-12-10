@@ -112,7 +112,8 @@ def plot_multi_counties(opts, df, counties, pops):
     ax.legend()                                     # show the legend
     if opts['--log']:
         ax.set_yscale('log')
-        plt.ylim(bottom=int(opts['--threshold'])//2)
+        plt.ylim(bottom=5)
+        # plt.ylim(bottom=int(opts['--threshold'])//2)
     else:
         plt.autoscale()
     ax.set_title(title)
