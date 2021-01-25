@@ -119,12 +119,14 @@ def plot_multi_counties(opts, df, counties, pops):
     ax.set_title(title)
 
     ax.xaxis.set_minor_locator(mdates.WeekdayLocator(byweekday=mdates.MO))  # every week x ticks
-    ax.xaxis.set_major_locator(mdates.MonthLocator())  # major x: the first of every month
-    ax.xaxis.set_major_formatter(mdates.DateFormatter('%b 1')) # x labels month day
+    # I like the x axis labels these 2 lines make but I loose the cursor resolution
+    # ax.xaxis.set_major_locator(mdates.MonthLocator())  # major x: the first of every month
+    # ax.xaxis.set_major_formatter(mdates.DateFormatter('%b 1')) # x labels month day
 
     # plt.ylim(bottom=int(opts['--threshold'])//2)
     plt.grid(which='major', axis='both')             # show both major axis
     plt.grid(which='minor', axis='y', ls='dotted')   # show y minor as dotted
+    ax.set_xlabel('https://github.com/BobBaylor/covid-19-data')
     fig.autofmt_xdate()       # rotate, right align, and leave room for date labels
     plt.show()
 
@@ -192,7 +194,7 @@ def test(opts):
 
     df = pd.read_csv(DATA_FILE, encoding='ISO-8859-1')
     f_date = datetime.fromtimestamp(os.path.getmtime(DATA_FILE))
-    print(f'Data was retrieved {f_date:%B %d, %Y at %H:%M %p}')
+    print(f'Data were retrieved {f_date:%B %d, %Y at %H:%M %p}')
     # date,county,state,fips,cases,deaths
     # 2020-01-21,Snohomish,Washington,53061,1,0
 
@@ -255,5 +257,5 @@ def test(opts):
 
 
 if __name__ == '__main__':
-    opts = docopt.docopt(USAGE_TEXT, version='0.0.4')
+    opts = docopt.docopt(USAGE_TEXT, version='0.0.5')
     test(opts)
